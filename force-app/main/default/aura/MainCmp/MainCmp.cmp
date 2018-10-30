@@ -1,0 +1,51 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <!-- include the overlay library -->
+    <lightning:overlayLibrary aura:id="overlayLib" />
+
+    <!-- attribute located in the scope of the main component that the modal has access to -->
+    <aura:attribute name="myCheckbox" access="private" type="Boolean" default="false" />
+    <aura:attribute name="myModalInstance" type="Object" />
+
+    <!-- modal components as aura attributes -->
+    <aura:attribute name="myModalHeader" type="Aura.ComponentDefRef[]">
+        <div>I am the Header. Checkbox: {!v.myCheckbox}</div>
+    </aura:attribute>
+
+    <aura:attribute name="myModalBody" type="Aura.ComponentDefRef[]">
+        <div>
+            <lightning:input
+                type="checkbox"
+                checked="{!v.myCheckbox}"
+                label="Check me!"
+            />
+        </div>
+    </aura:attribute>
+
+    <aura:attribute name="myModalFooter" type="Aura.ComponentDefRef[]">
+        <div class="slds-grid slds-grid_align-end">
+            <lightning:button
+                variant="neutral"
+                label="Close"
+                onclick="{!c.handleModalCloseClick}"
+            />
+            <lightning:button
+                variant="brand"
+                label="Save"
+                onclick="{!c.handleModalSaveClick}"
+                disabled="{!not(v.myCheckbox)}"
+            />
+        </div>
+    </aura:attribute>
+
+    <!-- the main component's body -->
+    <div class="slds-card">
+        <div class="slds-p-around_large">
+            <lightning:button
+                variant="brand"
+                onclick="{!c.handleBtnClick}"
+                label="Open Modal"
+            />
+        </div>
+    </div>
+
+</aura:component>
