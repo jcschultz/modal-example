@@ -4,13 +4,14 @@
 
     <!-- attribute located in the scope of the main component that the modal has access to -->
     <aura:attribute name="myCheckbox" access="private" type="Boolean" default="false" />
+
+    <!-- attribute to hold the instance of the overlay for closing later -->
     <aura:attribute name="myModalInstance" type="Object" />
 
     <!-- modal components as aura attributes -->
     <aura:attribute name="myModalHeader" type="Aura.ComponentDefRef[]">
         <div>I am the Header. Checkbox: {!v.myCheckbox}</div>
     </aura:attribute>
-
     <aura:attribute name="myModalBody" type="Aura.ComponentDefRef[]">
         <div>
             <lightning:input
@@ -20,7 +21,6 @@
             />
         </div>
     </aura:attribute>
-
     <aura:attribute name="myModalFooter" type="Aura.ComponentDefRef[]">
         <div class="slds-grid slds-grid_align-end">
             <lightning:button
